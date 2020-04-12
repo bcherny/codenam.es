@@ -70,6 +70,7 @@ yarn start
     - state (one of: "NOT_STARTED" by default, "IN_PROGRESS")
   - user
     - id (int)
+    - user_id (string)
     - name (string)
     - profile pic? (string: emoji)
   - room_x_user

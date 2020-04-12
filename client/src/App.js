@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import {HashRouter as Router, Switch, Route} from 'react-router-dom'
-import HomePage from './containers/HomePage'
+import HomePage from './containers/HomePage.jsx'
 import axios from 'axios'
 
 export default function App() {
@@ -14,7 +14,14 @@ export default function App() {
   function handleFetchUser() {
     const storedUser = ls.getItem('user')
 
-    if(storedUser === '' ||storedUser===undefined)
+    // Creates user
+    if (storedUser === '' || storedUser === undefined) {
+      const user = axios.post('http://localhost:8000/api/user')
+
+      ls.setItem(user)
+    } else {
+      const user = axios.get('http://localhost:8000/api/user/' + storedUser)
+    }
   }
 
   return (

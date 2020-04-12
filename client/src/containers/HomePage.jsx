@@ -17,15 +17,7 @@ export default function HomePage() {
             }}
           >
             Join Room
-          </button>
+         </button>
         ) : (
-          <input
-            type="text"
-            className="join-room-input"
-            placeholder="Room Code:"
-          />
-        )}
-      </div>
-    </div>
-  )
-}
+          <input type="text" className="join-room-input" placeholder="Room Code:"/>
+

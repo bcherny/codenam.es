@@ -17,6 +17,7 @@ model room {
 
 model user {
   id          Int           @default(autoincrement()) @id
+  user_id     String        @unique
   name        String?
   pic         String?
   user_x_room user_x_room[]

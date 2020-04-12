@@ -1,4 +1,5 @@
 import express from 'express'
+import GetUser from './routes/GetUser.mjs'
 import PostRoom from './routes/PostRoom.mjs'
 import PostUser from './routes/PostUser.mjs'
 import cors from 'cors'
@@ -20,13 +21,7 @@ export function init() {
       .post('/api/room', PostRoom)
 
       // Get a person
-      .get('/api/user/:user_id', ({params: {user_id}}, res) => {
-        res.send({
-          id: user_id,
-          name: 'Fake Person',
-          pic: '😵',
-        })
-      })
+      .get('/api/user/:user_id', GetUser)
 
       // Get a room
       .get('/api/room/:room_id', ({params: {room_id}}, res) => {
