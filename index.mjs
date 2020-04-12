@@ -1,12 +1,12 @@
-import express from "express"
+import express from 'express'
 
 const app = express()
   // Serve the client
-  .use(express.static("./client/build"))
+  .use(express.static('./client/build'))
 
   // Serve the API
-  .get("/api/foo", (req, res) => {
-    res.send({data: {x: "y"}})
+  .get('/api/foo', (req, res) => {
+    res.send({data: {x: 'y'}})
   })
 
   // Listen!
