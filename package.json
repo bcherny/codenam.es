@@ -1,0 +1,21 @@
+{
+  "name": "codenames-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./index.mjs",
+    "dev": "concurrently 'npm:dev:client' 'npm:dev:server'",
+    "dev:client": "cd ./client && npm start",
+    "dev:server": "nodemon ./index.mjs"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.3",
+    "prettier": "^2.0.4"
+  }
+}
