@@ -1,9 +1,9 @@
 import prisma from '../services/Prisma.mjs'
 
-export default async function ({params: {user_id}}, res) {
+export default async function ({params: {id}}, res) {
   const user = await prisma.user.findOne({
     where: {
-      user_id,
+      short_id: id,
     },
   })
   res.send(user)

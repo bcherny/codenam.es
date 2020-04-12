@@ -21,7 +21,7 @@ export function init() {
       .post('/api/room', PostRoom)
 
       // Get a person
-      .get('/api/user/:user_id', GetUser)
+      .get('/api/user/:id', GetUser)
 
       // Get a room
       .get('/api/room/:room_id', ({params: {room_id}}, res) => {

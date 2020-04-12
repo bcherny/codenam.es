@@ -10,6 +10,7 @@ datasource db {
 model room {
   id           Int           @default(autoincrement()) @id
   room_id      String        @unique
+  short_id     String        @unique
   state        String
   time_created DateTime      @default(now())
   user_x_room  user_x_room[]
@@ -17,9 +18,10 @@ model room {
 
 model user {
   id          Int           @default(autoincrement()) @id
-  user_id     String        @unique
   name        String?
   pic         String?
+  short_id    String        @unique
+  user_id     String        @unique
   user_x_room user_x_room[]
 }
 
