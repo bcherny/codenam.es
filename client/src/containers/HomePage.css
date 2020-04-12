@@ -1,0 +1,23 @@
+.home-page {
+}
+
+.home-page .title {
+  text-align: center;
+  margin-top: calc(30vh - 40px);
+  font-size: 40px;
+}
+
+.home-page .buttons-container {
+  width: 400px;
+  margin: auto;
+  margin-top: 10vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+.home-page .buttons-container button {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  box-shadow: 20px 20px 10px lightgrey;
+}
