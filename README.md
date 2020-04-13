@@ -79,4 +79,10 @@ yarn start
     - user_id (int)
     - state (one of: "NOT_READY", "READY")
 
-SELECT room_id from room_x_user WHERE user_id={user_id}
+## DB Commands
+
+### Updating the schema
+
+1. Add a migration in prisma/migrations
+2. Run it: `psql -h host -U user -f ./prisma/migrations/2.sql`
+3. Regenerate the Prisma model: `npx prisma generate`

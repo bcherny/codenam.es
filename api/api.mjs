@@ -1,5 +1,7 @@
 import express from 'express'
 import GetUser from './routes/GetUser.mjs'
+import GetRoom from './routes/GetRoom.mjs'
+import PatchRoomJoin from './routes/PatchRoomJoin.mjs'
 import PostRoom from './routes/PostRoom.mjs'
 import PostUser from './routes/PostUser.mjs'
 import cors from 'cors'
@@ -14,24 +16,12 @@ export function init() {
       // Serve the client
       .use(express.static('./client/build'))
 
-      // Create a new user
-      .post('/api/user', PostUser)
-
-      // Create a new room
-      .post('/api/room', PostRoom)
-
-      // Get a person
+      // API Endpoints
       .get('/api/user/:id', GetUser)
-
-      // Get a room
-      .get('/api/room/:room_id', ({params: {room_id}}, res) => {
-        res.send({
-          id: 1,
-          room_id,
-          state: 'NOT_STARTED',
-          users: [2],
-        })
-      })
+      .get('/api/room/:id', GetRoom)
+      .patch('/api/room/:room_id/join/:user_id', PatchRoomJoin)
+      .post('/api/user', PostUser)
+      .post('/api/room', PostRoom)
 
       // Change a person's name
       .patch(
@@ -53,19 +43,6 @@ export function init() {
             id: user_id,
             name: 'Fake Person',
             pic,
-          })
-        }
-      )
-
-      // Join a room
-      .patch(
-        '/api/room/:room_id/join/:user_id',
-        ({params: {room_id, user_id}}, res) => {
-          res.send({
-            id: 1,
-            room_id,
-            state: 'NOT_STARTED',
-            users: [user_id],
           })
         }
       )

@@ -14,5 +14,6 @@ export default async function (req, res) {
     id: room.short_id,
     state: room.state,
     time_created: room.time_created,
+    users: [],
   })
 }

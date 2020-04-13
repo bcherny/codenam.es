@@ -6,5 +6,9 @@ export default async function ({params: {id}}, res) {
       short_id: id,
     },
   })
-  res.send(user)
+  res.send({
+    id: user.short_id,
+    name: user.name,
+    pic: user.pic,
+  })
 }
