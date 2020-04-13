@@ -33,8 +33,8 @@ yarn start
 | ✅  | `GET`   | `/api/user/:id`                     | Get a user                  |
 | ✅  | `PATCH` | `/api/room/:room_id/join/:user_id`  | Join a room                 |
 | ☢️  | `PATCH` | `/api/room/:room_id/ready/:user_id` | Mark a person as ready      |
-| ☢️  | `PATCH` | `/api/user/:user_id/name`           | Change a person's name      |
-| ☢️  | `PATCH` | `/api/user/:user_id/pic`            | Change a person's emoji pic |
+| ✅  | `PATCH` | `/api/user/:user_id {name: 'foo'}`  | Change a person's name      |
+| ✅  | `PATCH` | `/api/user/:user_id {pic: '❤️'}`    | Change a person's emoji pic |
 | ✅  | `POST`  | `/api/room`                         | Create a room               |
 | ✅  | `POST`  | `/api/user`                         | Create a user               |
 
