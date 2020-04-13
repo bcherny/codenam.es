@@ -42,7 +42,8 @@ yarn start
 
 - create-react-app
 - Express
-- TODO: Heroku
+- Postgres
+- Heroku
 
 ## How the UI/UX works
 
