@@ -17,11 +17,11 @@ export function init() {
       .use(express.static('./client/build'))
 
       // API Endpoints
-      .get('/api/user/:id', GetUser)
       .get('/api/room/:id', GetRoom)
+      .get('/api/user/:id', GetUser)
       .patch('/api/room/:room_id/join/:user_id', PatchRoomJoin)
-      .post('/api/user', PostUser)
       .post('/api/room', PostRoom)
+      .post('/api/user', PostUser)
 
       // Change a person's name
       .patch(
