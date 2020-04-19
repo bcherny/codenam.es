@@ -14,7 +14,9 @@ export default function App() {
     const storedUserId = ls.getItem('userId')
 
     if (Number(storedUserId) === NaN) {
-      const newUserId = await axios.post('http://localhost:8000/api/user').id
+      const newUserId = await axios.post('http://localhost:8000/api/user')
+
+      ls.setItem('userId', String(newUserId))
     }
   }
 
