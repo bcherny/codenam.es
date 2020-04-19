@@ -27,16 +27,18 @@ yarn start
 
 ✅ means it's implemented, ☢️ means it's not (yet):
 
-|     | Verb    | Route                               | Description                   |
-| --- | ------- | ----------------------------------- | ----------------------------- |
-| ✅  | `GET`   | `/api/room/:id`                     | Get a room                    |
-| ✅  | `GET`   | `/api/user/:id`                     | Get a user                    |
-| ✅  | `PATCH` | `/api/room/:room_id/join/:user_id`  | Join a room                   |
-| ✅  | `PATCH` | `/api/room/:room_id/state/:user_id` | Mark a person as ready or not |
-| ✅  | `PATCH` | `/api/user/:user_id {name: 'foo'}`  | Change a person's name        |
-| ✅  | `PATCH` | `/api/user/:user_id {pic: '❤️'}`    | Change a person's emoji pic   |
-| ✅  | `POST`  | `/api/room`                         | Create a room                 |
-| ✅  | `POST`  | `/api/user`                         | Create a user                 |
+|     | Verb    | Route                                             | Description                   |
+| --- | ------- | ------------------------------------------------- | ----------------------------- |
+| ✅  | `GET`   | `/api/room/:id`                                   | Get a room                    |
+| ✅  | `GET`   | `/api/user/:id`                                   | Get a user                    |
+| ✅  | `PATCH` | `/api/room/:room_id/join/:user_id`                | Join a room                   |
+| ✅  | `PATCH` | `/api/room/:room_id/state/:user_id`               | Mark a person as ready or not |
+| ☢️  | `PATCH` | `/api/room/:room_id/guess/:user_id {word: 'FOO'}` | Guess word "FOO"              |
+| ☢️  | `PATCH` | `/api/room/:room_id/finish-turn/:user_id`         | Finish your turn              |
+| ✅  | `PATCH` | `/api/user/:user_id {name: 'foo'}`                | Change a person's name        |
+| ✅  | `PATCH` | `/api/user/:user_id {pic: '❤️'}`                  | Change a person's emoji pic   |
+| ✅  | `POST`  | `/api/room`                                       | Create a room                 |
+| ✅  | `POST`  | `/api/user`                                       | Create a user                 |
 
 ## Stack
 
