@@ -91,6 +91,10 @@ yarn start
     - id (int)
     - room_id (string)
     - state (one of: "NOT_STARTED" by default, "IN_PROGRESS")
+    - colors (JSON-encoded 2D matrix of: "R", "B", "N", and "A")
+    - revealed_colors (JSON-encoded 2D matrix of booleans)
+    - words (JSON-encoded 2D matrix of strings)
+    - current_turn (one of: "R", "B")
   - user
     - id (int)
     - user_id (string)
@@ -100,6 +104,7 @@ yarn start
     - id (int)
     - room_id (int)
     - user_id (int)
+    - role (one of: "ASKER", "GUESSER")
     - state (one of: "NOT_READY", "READY")
 
 ## DB Commands
@@ -107,5 +112,5 @@ yarn start
 ### Updating the schema
 
 1. Add a migration in prisma/migrations
-2. Run it: `psql -h host -U user -f ./prisma/migrations/2.sql`
+2. Run it: `psql -h host -d dbname -U user -f ./prisma/migrations/2.sql`
 3. Regenerate the Prisma model: `npx prisma generate`
