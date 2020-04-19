@@ -1,0 +1,42 @@
+.container.hero .title {
+  font-size: 40px;
+}
+
+.container.hero .buttons-container {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.container.hero .buttons-container button {
+  padding: 20px;
+  font-size: 15px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  height: 60px;
+  width: 130px;
+}
+
+.container.hero .buttons-container button.create-room {
+  border: 0.5px lightblue solid;
+}
+
+.container.hero .buttons-container button.join-room {
+  border: 0.5px orange solid;
+}
+
+.container.hero .buttons-container button:hover {
+  background: black;
+  color: lightblue;
+  border: 0;
+}
+
+.container.hero .buttons-container .join-room-input {
+  font-size: 15px;
+  border-radius: 5px;
+  outline: none;
+  border: 0.5px orange solid;
+  width: 130px;
+  text-align: center;
+}
