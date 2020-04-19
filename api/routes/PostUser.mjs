@@ -11,6 +11,7 @@ export default async function (req, res) {
       user_id: sha1,
     },
   })
+  // change
   res.send({
     id: user.short_id,
     name: user.name,
