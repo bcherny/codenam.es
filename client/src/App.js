@@ -6,21 +6,15 @@ import axios from 'axios'
 
 export default function App() {
   React.useEffect(() => {
-    handleFetchUser()
+    handleUserId()
   }, [])
 
-  const ls = localStorage
+  async function handleUserId() {
+    const ls = localStorage
+    const storedUserId = ls.getItem('userId')
 
-  function handleFetchUser() {
-    const storedUser = ls.getItem('user')
-
-    // Creates user
-    if (storedUser === '' || storedUser === undefined) {
-      const user = axios.post('http://localhost:8000/api/user')
-
-      ls.setItem(user)
-    } else {
-      const user = axios.get('http://localhost:8000/api/user/' + storedUser)
+    if (Number(storedUserId) === NaN) {
+      const newUserId = await axios.post('http://localhost:8000/api/user').id
     }
   }
 
