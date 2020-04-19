@@ -1,4 +1,4 @@
-# codenam.es
+# codenam.es ![](https://github.com/bcherny/codenam.es/workflows/ci/badge.svg)
 
 > Play codenames online!
 
