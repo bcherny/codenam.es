@@ -1,5 +1,6 @@
 import prisma from '../services/Prisma.mjs'
 import {generateRandomSha1} from '../utils/hash.mjs'
+import {runTriggers} from '../triggers/Room.mjs'
 
 export default async function (
   {body: {state}, params: {room_id, user_id}},
@@ -32,6 +33,9 @@ export default async function (
       id: userXRoom[0].id,
     },
   })
+
+  runTriggers(room.id)
+
   const roomUsers = await prisma.user_x_room.findMany({
     include: {
       user: {
@@ -40,18 +44,6 @@ export default async function (
     },
     where: {
       room_id: room.id,
-    },
-  })
-
-  const roomStatus = roomUsers.every(_ => _.state === 'READY')
-    ? 'IN_PROGRESS'
-    : 'NOT_STARTED'
-  await prisma.room.update({
-    data: {
-      state: roomStatus,
-    },
-    where: {
-      id: room.id,
     },
   })
 
