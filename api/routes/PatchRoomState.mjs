@@ -33,9 +33,7 @@ export default async function (
       id: userXRoom[0].id,
     },
   })
-
-  runTriggers(room.id)
-
+  await runTriggers(room.id)
   const roomUsers = await prisma.user_x_room.findMany({
     include: {
       user: {
@@ -46,10 +44,14 @@ export default async function (
       room_id: room.id,
     },
   })
-
+  const {state: newRoomState} = await prisma.room.findOne({
+    where: {
+      short_id: room_id,
+    },
+  })
   res.send({
     id: room.short_id,
-    state: room.state,
+    state: newRoomState,
     time_created: room.time_created,
     users: roomUsers.map(_ => _.user.short_id),
   })

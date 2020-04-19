@@ -28,10 +28,46 @@ export function get(url) {
   })
 }
 
-export function post(url, data) {
+export function patch(url, data) {
   return new Promise((resolve, reject) => {
+    const serialized = JSON.stringify(data)
     const req = request(
       {
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': serialized.length,
+        },
+        hostname: 'localhost',
+        port: 9000,
+        path: url,
+        method: 'PATCH',
+      },
+      res => {
+        let data = ''
+        res.setEncoding('utf8')
+        res.on('data', chunk => {
+          data += chunk
+        })
+        res.on('end', () => {
+          resolve(JSON.parse(data))
+        })
+      }
+    )
+    req.on('error', e => reject(e.message))
+    req.write(serialized)
+    req.end()
+  })
+}
+
+export function post(url, data) {
+  return new Promise((resolve, reject) => {
+    const serialized = JSON.stringify(data)
+    const req = request(
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': serialized.length,
+        },
         hostname: 'localhost',
         port: 9000,
         path: url,
@@ -49,7 +85,7 @@ export function post(url, data) {
       }
     )
     req.on('error', e => reject(e.message))
-    req.write(JSON.stringify(data))
+    req.write(serialized)
     req.end()
   })
 }

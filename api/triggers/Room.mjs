@@ -18,7 +18,6 @@ async function updateRoomStatusWhenUserStatusesChange(roomID) {
       room_id: roomID,
     },
   })
-
   const roomStatus = roomUsers.every(_ => _.state === 'READY')
     ? 'IN_PROGRESS'
     : 'NOT_STARTED'
