@@ -106,6 +106,7 @@ yarn start
     - user_id (int)
     - role (one of: "ASKER", "GUESSER")
     - state (one of: "NOT_READY", "READY")
+    - color (one of: "R", "B")
 
 ## DB Commands
 

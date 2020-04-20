@@ -12,8 +12,27 @@ export default async function ({params: {room_id, user_id}}, res) {
       short_id: user_id,
     },
   })
+
+  const existingRoomUsers = await prisma.user_x_room.findMany({
+    where: {
+      room_id: room.id,
+    },
+  })
+  if (existingRoomUsers.length > 3) {
+    throw RangeError('You can only play with 4 people at a time.')
+  }
+
+  const color =
+    existingRoomUsers.filter(_ => _.color === 'R').length === 2 ? 'B' : 'R'
+
+  const role = existingRoomUsers.filter(_ => _.color === color).length
+    ? 'ASKER'
+    : 'GUESSER'
+
   await prisma.user_x_room.create({
     data: {
+      color,
+      role,
       room: {connect: {id: room.id}},
       state: 'NOT_READY',
       user: {connect: {id: user.id}},

@@ -8,12 +8,16 @@ datasource db {
 }
 
 model room {
-  id           Int           @default(autoincrement()) @id
-  room_id      String        @unique
-  short_id     String        @unique
-  state        String
-  time_created DateTime      @default(now())
-  user_x_room  user_x_room[]
+  colors          String
+  current_turn    String
+  id              Int           @default(autoincrement()) @id
+  revealed_colors String
+  room_id         String        @unique
+  short_id        String        @unique
+  state           String
+  time_created    DateTime      @default(now())
+  words           String
+  user_x_room     user_x_room[]
 }
 
 model user {
@@ -26,10 +30,14 @@ model user {
 }
 
 model user_x_room {
+  color   String
   id      Int    @default(autoincrement()) @id
+  role    String
   room_id Int
   state   String
   user_id Int
   room    room   @relation(fields: [room_id], references: [id])
   user    user   @relation(fields: [user_id], references: [id])
+
+  @@unique([room_id, user_id], name: "uniqueroomuserpair")
 }
